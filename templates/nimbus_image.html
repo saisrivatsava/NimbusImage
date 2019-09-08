@@ -1,0 +1,69 @@
+{% extends "baseTemplate.html"%}
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+<h2 class="text-center">Nimbus Image</h2>
+<div class="card card-1  text-md-center" id="card1">
+
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="row justify-content-md-center">
+
+                <form action="/predict" method="POST" role="form" enctype="multipart/form-data" class="needs-validation"
+                    novalidate>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <input type="text" class="form-control" name="name" placeholder="Your Name">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <input type="text" class="form-control" name="image_name" placeholder="Image Name" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="email" class="form-control" name="email" placeholder="Email Address">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="imagefile" required>
+                                <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group col-md-3">
+                            <select name="classificationModel" class="form-control" required>
+                                <option selected>ResNet50</option>
+                                <option>ResNet50</option>
+                                <option>VGG19</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <center>
+                        <button type="submit" class="btn btn-success">Run Nimbus Image</button>
+                    </center>
+                    <!-- <a class="btn btn-lg btn-block btn-primary" href="/nimbus" role="button">Run Nimbus</a> -->
+                    <!-- <button type="submit" class="btn btn-primary">Sign in</button> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+{%endblock%}

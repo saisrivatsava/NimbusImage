@@ -1,0 +1,51 @@
+{% extends "baseTemplate.html"%}
+
+{% block content %}
+
+<br><br>
+<br><br>
+<h3 class="text-center">Nimbus Image Prediction - {{iname}}</h3>
+<br>
+
+<div class="row justify-content-center align-items-center">
+    <div class="col-md-6">
+        <h3>Input Image</h3><br>
+        <img src={{image_path}} class="img-fluid" style="width: 400px;height:400px">
+        <br>
+
+        <h4>Model : {{model_name}}</h4>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"><b>Prediction</b></th>
+                    <th scope="col"><b>Probability</b></th>
+                    <!-- <th scope="col">Handle</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                {%  for prediction in predictions %}
+                {% set list1 = prediction.split(',') %}
+
+                <tr>
+                    <td>{{ list1[0]}}</td>
+                    <td>{{ list1[1]}}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- </div></div></div> -->
+<br>
+<div class="row justify-content-center align-items-center">
+    <div class="col-md-6">
+
+        <a class="btn btn-lg btn-block btn-primary" href="/" role="button">Go back to Nimbus Image</a>
+    </div>
+</div>
+<br><br>
+
+
+{% endblock %}
