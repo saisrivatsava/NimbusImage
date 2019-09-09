@@ -22,6 +22,7 @@ image_path_global = None
 
 
 model = None
+graph = None
 
 def load_model():
     # load the pre-trained Keras model (here we are using a model
@@ -31,6 +32,7 @@ def load_model():
     model = ResNet50(weights="imagenet")
     global graph
     graph = tf.get_default_graph()
+    print(graph)
 
 def prepare_image(image_path, target):
     img = image.load_img(image_path, target_size=target)
@@ -97,8 +99,12 @@ def nimbus_image():
     return render_template('nimbus_image.html')
 
 if __name__ == '__main__':
+    if not os.path.exists(app.config['UPLOAD_FOLDER']):
+        os.mkdir(app.config['UPLOAD_FOLDER'])
+    
     print(("* Loading Keras model and Flask starting server..."
         "please wait until server has fully started"))
     load_model()
+    app.run()#,threaded = False)
     
-    app.run(debug=True)#,threaded = False)
+    # app.run(debug=True)#,threaded = False)
