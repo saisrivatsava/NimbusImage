@@ -99,17 +99,17 @@ def nimbus_image():
     return render_template('nimbus_image.html')
 
 if __name__ == '__main__':
-    # if not os.path.exists(app.config['UPLOAD_FOLDER']):
-    #     os.mkdir(app.config['UPLOAD_FOLDER'])
+    if not os.path.exists(app.config['UPLOAD_FOLDER']):
+        os.mkdir(app.config['UPLOAD_FOLDER'])
     
-    # print(("* Loading Keras model and Flask starting server..."
-    #     "please wait until server has fully started"))
-    # load_model()
-    # app.run()#,threaded = False)
     print(("* Loading Keras model and Flask starting server..."
         "please wait until server has fully started"))
     load_model()
+    app.run(debug=True)#,threaded = False)
+    # print(("* Loading Keras model and Flask starting server..."
+    #     "please wait until server has fully started"))
+    # load_model()
 
-    app.run(debug=True)#,threaded = False) 
+    # app.run(debug=True)#,threaded = False) 
     
     # app.run(debug=True)#,threaded = False)
